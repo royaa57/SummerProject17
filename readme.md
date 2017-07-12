@@ -79,6 +79,8 @@ $git checkout master
 $git merge upstream/master
 ```
 
+7. Now go to your github account and push the New Pull Request button,choose the branches, and create a pull request.If the edits are acepted your code will go online.
+
 
 
 
