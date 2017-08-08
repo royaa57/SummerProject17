@@ -168,7 +168,7 @@ header .nav-login form input{
     line-height: 30px; 
 }
 
-header .nav-login form button{
+header .nav-login form button {
     float: left;
     width: 60px;
     height: 30px;
@@ -180,8 +180,16 @@ header .nav-login form button{
     color: #111;
     cursor: pointer; 
 }
+a.button {
+	border: none;
+    background-color: #f3f3f3;
+    font-family: arial;
+    font-size: 14px;
+    color: #111;
+    cursor: pointer; 
+}
 
-header .nav-login form button:hover{
+header .nav-login form button:hover{ 
     background-color: #ccc;
 
 }
@@ -250,5 +258,9 @@ header .nav-login a{
 
 .signup-form button:hover{
     background-color: #111; 
+}
+.signup-form p{
+	margin:10px;
+	padding:10px;
 }
 

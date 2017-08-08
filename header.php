@@ -13,6 +13,7 @@
 <header>
    
    <nav>
+
       <div class="main-wrapper">
 
        <ul>
@@ -21,6 +22,7 @@
          </li>
        </ul>
         <div class="nav-login">
+          
             <?php 
             
             if (isset($_SESSION['u_uid'])) {
@@ -35,7 +37,9 @@
                  <input type="password" name="pwd" placeholder="Password">
                  <button type="submit" name="submit" >Login</button>
             </form>
+
             <a href="signup.php">Sign Up</a>';
+
             }
             ?>
             

@@ -14,7 +14,7 @@ if (isset($_POST['submit']))
 	if (empty($first) || empty($last) || empty($email) || empty($uid) || empty($pwd))
 	{
 		header("Location: ../signup.php?signup=empty");
-        exit();
+		exit();
 	}
 	else
 	{
@@ -50,6 +50,7 @@ if (isset($_POST['submit']))
 	                	//Insert the user into the database
                       $sql = "INSERT INTO `users` (user_first, user_last,user_email, user_uid, user_pwd)  VALUES ('$first','$last', '$email', '$uid', '$hashedPwd' )";
                       mysqli_query($conn, $sql);
+
                       //$get_id = "SELECT FROM `users` "
                       //$_SESSION['u_id'] = $row['user_id'];
 					 //$_SESSION['u_first'] = $first;
@@ -57,6 +58,7 @@ if (isset($_POST['submit']))
 					 //$_SESSION['u_email'] = $row['user_email'];
                     $_SESSION['u_uid'] = $uid;
                     header("Location: ../question.php");
+
                       exit();
                    
 	                }
