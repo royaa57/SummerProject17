@@ -9,7 +9,7 @@
 		   {
             $files= glob("images/*.*");
 
-            for ($i=0; $i < count($files) ; $i++) { 
+            for ($i=0; ($i < min(5,count($files)) ; $i++) { 
             	$num = $files[$i];
             	echo '<img src = "'.$num.'"
                 alt = "L"
