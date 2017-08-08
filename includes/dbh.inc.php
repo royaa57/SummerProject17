@@ -4,7 +4,7 @@
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "root";
-$dbName= "loginsystem";
+$dbName= "FurnitureApp";
 
 $conn = mysqli_connect($dbServername,$dbUsername,$dbPassword,$dbName);
 

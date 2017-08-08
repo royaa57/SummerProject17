@@ -17,7 +17,7 @@
 
    	   <ul>
    	   	 <li>
-   	   	 	<a href="index.php">Home</a>
+   	   	 	<a href="index.php">Home </a>
    	   	 </li>
    	   </ul>
    	  	<div class="nav-login">
@@ -37,7 +37,7 @@
 
             </form>
 
-            <a href="signup.php">Sign Up</a>';
+            <a href="signup.php" class="button">Sign Up</a>';
             }
             ?>
             
