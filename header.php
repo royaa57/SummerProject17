@@ -1,8 +1,10 @@
 <?php
   session_start();
-if(!isset($_SESSION['u-uid'])){
-   header("Location: index.php");
+  if (!isset($_SESSION['u_uid'])) {
+ 	 header("Location: index.php");
+ 	 exit();
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +22,9 @@ if(!isset($_SESSION['u-uid'])){
 
        <ul>
          <li>
-          <a href="index.php">Home</a>
+         
+          <a  href="index.php">Home</a>
+          
          </li>
        </ul>
         <div class="nav-login">
@@ -34,11 +38,8 @@ if(!isset($_SESSION['u-uid'])){
             }
             
             ?>
-            
 
-          
-          
-        </div>
+       </div>
       </div>
 
    </nav>  
