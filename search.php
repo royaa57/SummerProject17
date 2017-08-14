@@ -1,41 +1,54 @@
-<?php 
+<?php
    include_once 'header.php';
 ?>
 
-<section class="main-container">
-	<div class="main-wrapper">
-		<form class="signup-form" action="" method="POST">
-		
-		<input type="text" name="search" placeholder="Search">
-		
-		<button type="submit" name="submit">Search</button>
-	</form>
+<div class="container-fluid">
+		<form action="" method="POST">
+        <div class="input-group">
+          <input type="text" class="form-control" name="search" placeholder="Search">
+          <div class="input-group-btn">
+            <button class="btn btn-default" name="submit" type="submit">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
+        </div>
+	  </form>
 	<?php
-	if (isset($_POST['submit'])){ 
+	if (isset($_POST['submit'])){
 		include_once 'includes/dbh.inc.php';
 		$searchTerm = mysqli_real_escape_string($conn, $_POST['search']);
-		echo $searchTerm;
 		$sql = "SELECT * FROM `items` WHERE type = '$searchTerm' LIMIT 5";
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
-		while($row=mysqli_fetch_array($result)){ 
-			 $name  =$row['name']; 
-			 $url=$row['url']; 
-			 $filename=$row['filepath'];
-			 echo "<ul>\n"; 
-			 echo "<li>" . "<a  href=\"".$url."\"><img class=\"search-result\" src=\"pictures/".$filename."\"></a></li>\n"; 
-			 echo "</ul>"; 
-		}
-	
+    if ($resultCheck>0){
+      $i=1;
+		  while($row=mysqli_fetch_array($result)){
+        if ($i==1){
+          echo '<div class="row">';
+        }
+        echo '<div class="col-md-4"><div class="thumbnail">';
+        $name  =$row['name'];
+			  $url=$row['url'];
+			  $filename=$row['filepath'];
+        echo '<a  href="'.$url.'"><img class=".img-responsive" src="pictures/'.$filename.'"></a></div></div>';
+        $i=$i+1;
+        if ($i==4){
+          echo '</div>';
+          $i=$i%3;
+        }
+		  }
+
+   }else{
+      echo 'No matching images';
+    }
+
 	}else{
 		header("Location: search.php");
 		exit();
 	}
-	   
-?>
-	</div>
-</section>
 
-<?php 
+?>
+</div>
+<?php
    include_once 'footer.php';
  ?>
