@@ -20,21 +20,28 @@
 		$sql = "SELECT * FROM `items` WHERE type = '$searchTerm' LIMIT 5";
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
+    $imgPerRow=4;
     if ($resultCheck>0){
       $i=1;
 		  while($row=mysqli_fetch_array($result)){
         if ($i==1){
           echo '<div class="row">';
         }
-        echo '<div class="col-md-4"><div class="thumbnail">';
+        echo '<div class="col-md-'.round(12/$imgPerRow).'"><div class="thumbnail">';
         $name  =$row['name'];
 			  $url=$row['url'];
 			  $filename=$row['filepath'];
-        echo '<a  href="'.$url.'"><img class=".img-responsive" src="pictures/'.$filename.'"></a></div></div>';
+        echo '<a  href="'.$url.'"><img class="square-image" src="pictures/'.$filename.'"></a>
+        <p><button type="button" class="btn btn-success btn-sm">
+          <span class="glyphicon glyphicon-thumbs-up"></span> Like
+        </button></p><p><button type="button" class="btn btn-danger btn-sm">
+          <span class="glyphicon glyphicon-thumbs-down"></span> Like
+        </button></p>';
+        echo '</div></div>';
         $i=$i+1;
-        if ($i==4){
+        if ($i==($imgPerRow+1)){
           echo '</div>';
-          $i=$i%3;
+          $i=$i%$imgPerRow;
         }
 		  }
 
