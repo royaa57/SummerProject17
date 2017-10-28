@@ -1,7 +1,6 @@
 <?php
-
+@ob_start();
 session_start();
-
 if (isset($_POST['submit'])) {
 	include 'dbh.inc.php';
 
@@ -22,7 +21,7 @@ if (isset($_POST['submit'])) {
 		if ($resultCheck<1) {
 		  header("Location: ../index.php?login=error");
 		  exit();
-		} 
+		}
 		else{
 			if ($row = mysqli_fetch_assoc($result)) {
                //DE-hashing the password
@@ -38,7 +37,7 @@ if (isset($_POST['submit'])) {
 					$_SESSION['u_email'] = $row['user_email'];
 					$_SESSION['u_uid'] = $row['user_uid'];
 					header("Location: ../index.php?login=success");
-		               exit();
+		      exit();
 				}
 			}
 		}
