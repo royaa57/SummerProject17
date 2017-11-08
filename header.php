@@ -5,6 +5,7 @@
  	 header("Location: index.php");
  	 exit();
  }
+ $pageName=basename($_SERVER['PHP_SELF']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,8 +21,14 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li>
+        <li class="<?php  echo ( $pageName == '' || $pageName == 'index.php' )? 'active': ''?>">
           <a  href="index.php">Home</a>
+        </li>
+        <li class="<?php  echo ( $pageName == 'search.php')? 'active': ''?>">
+          <a  href="search.php">Search</a>
+        </li>
+        <li class="<?php  echo ( $pageName == 'test.php')? 'active': ''?>">
+          <a  href="test.php">Test</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
