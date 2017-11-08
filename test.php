@@ -13,10 +13,11 @@
 if (isset($_POST['type'])){
    $file=$files[$_POST['key']];
    echo '<img width="200px"  src="'.$file.'"><br>';
-   echo '<form action="test.php" method="Post"><button type="submit" name="material">Material</button><button type="submit" name="next">Next</button></form>';
-   $statement='python -m scripts.label_image --graph=tf_files_type/retrained_graph.pb --labels=tf_files_type/retrained_labels.txt --image='.$file.' 2>&1';
+   echo '<form action="test.php" method="Post"><input type="hidden" name="key" value="'.$_POST['key'].'" /><button type="submit" name="material">Material</button><button type="submit" name="next">Next</button></form>';
+   #$statement='python -m scripts.label_image --graph=tf_files/retrained_graph.pb  --image='.$file.' 2>&1';
    #$statement='/Users/dreamer/anaconda/bin/python -m scripts.label_image --graph=tf_files_type/retrained_graph.pb  --image='.$file.' 2>&1';
-   #$statement='/Users/dreamer/anaconda/bin/python -m scripts.label_image --graph=tf_files_type/retrained_graph.pb  --labels=tf_files_type/retrained_labels.txt --image='.$file.' 2>&1';
+   $statement='python -m scripts.label_image --graph=tf_files_type/retrained_graph.pb  --labels=tf_files_type/retrained_labels.txt --image='.$file.' 2>&1';
+   #echo $statement;
 
    $i=shell_exec($statement);
    #echo $i;
@@ -33,10 +34,11 @@ if (isset($_POST['type'])){
 elseif (isset($_POST['material'])){
    $file=$files[$_POST['key']];
    echo '<img width="200px"  src="'.$file.'"><br>';
-   echo '<form action="test.php" method="Post"><button type="submit" name="type">Type</button><button type="submit" name="next">Next</button></form>';
-   $statement='python -m scripts.label_image --graph=tf_files_material/retrained_graph.pb  --labels=tf_files_material/retrained_labels.txt --image='.$file.' 2>&1';
-   #$statement='/Users/dreamer/anaconda/bin/python -m scripts.label_image --graph=tf_files_material/retrained_graph.pb --labels=tf_files_material/retrained_labels.txt --image='.$file.' 2>&1';
 
+   echo '<form action="test.php" method="Post"><input type="hidden" name="key" value="'.$_POST['key'].'" /><button type="submit" name="type">Type</button><button type="submit" name="next">Next</button></form>';
+   #$statement='python -m scripts.label_image --graph=tf_files/retrained_graph.pb  --image='.$file.' 2>&1';
+   $statement='python -m scripts.label_image --graph=tf_files_material/retrained_graph.pb --labels=tf_files_material/retrained_labels.txt --image='.$file.' 2>&1';
+   #echo $statement;
    $i=shell_exec($statement);
    #echo $i;
    $pattern1 = "/(.+\.jpg)/";
@@ -49,7 +51,7 @@ elseif (isset($_POST['material'])){
 	   echo "<li>".$matches[1][$n]." ".$matches[2][$n]."</li>";
    }
 }else{
-	$key = array_rand($files);
+	  $key = array_rand($files);
     $file=$files[$key];
     echo '<img width="200px"  src="'.$file.'"><br>';
     echo '<form action="test.php" method="Post">
